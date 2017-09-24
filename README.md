@@ -1,2 +1,2 @@
 # javaScript
-## 1.chrome²å¼ş
+## 1.chromeæ’ä»¶æµ‹è¯•OK
