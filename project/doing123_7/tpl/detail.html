@@ -1,0 +1,58 @@
+<div data-role="page" ng-controller="detailCtr">
+
+    <div class="ui-content">
+
+        <img ng-src="../img/{{dish.img_lg}}">
+
+        <p >{{dish.material}}</p>
+        <p>{{dish.detail}}</p>
+        <div >{{dish.price | currency:'￥'}}</div>
+
+        <button data-inline='true'
+                ng-click="jump('order.html')">我要订餐</button>
+        <button data-inline='true'
+                ng-click="jump('main.html')">我再看看</button>
+
+    </div>
+
+</div>
+
+
+
+
+<!--
+<div ng-include=" 'tpl/include/header.html' "></div>
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="#main">首页</a></li>
+        <li>详情</li>
+    </ul>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="page-header">
+                <h3>{{dish.name}}</h3>
+            </div>
+            <div class="text-center">
+                <img ng-src="img/{{dish.img_lg}}" class="img-responsive">
+            </div>
+            <div class="text-justify well">
+                <p class="lead">{{dish.material}}</p>
+                <p>{{dish.detail}}</p>
+                <div class="price text-success">{{dish.price | currency:'￥'}}</div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" class="btn btn-success" ng-click="jump('/order/'+dish.did)">我要订餐</button>
+                <button type="button" class="btn btn-warning" ng-click="jump('/main')">我再看看</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+
+<div ng-include=" 'tpl/include/footer.html' "></div>-->

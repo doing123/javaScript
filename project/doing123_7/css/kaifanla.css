@@ -1,0 +1,84 @@
+body{
+    font-family: 'SimHei' !important;
+    margin: 50px 0 100px 0;
+}
+.start{
+    margin-top:150px;
+    font-size:8em;
+}
+/*页脚*/
+.navbar-footer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar-footer-menu li {
+    display: inline-block;
+    line-height: 50px;
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+}
+.navbar-footer-menu li:hover {
+    background: #eee;
+}
+
+/*搜索*/
+.search {
+    margin-top:20px;
+}
+/*价格*/
+.price {
+    color: #f00;
+    padding-top: 5px;
+    font-size: 1.2em;
+}
+/*详情页上的导航面包屑*/
+.container .breadcrumb{
+    margin-top: 20px;
+    margin-bottom:0px;
+}
+
+/*详情页上的产品名称*/
+.panel-body .page-header,.panel-body .page-header h3{
+    margin-top:0px;
+}
+
+/*订单中心*/
+.order-table>tbody>tr>td{
+    vertical-align: middle;
+}
+
+/*定义过场动画*/
+.page {
+    position: absolute;
+    width: 100%;
+}
+.page.ng-enter,
+.page.ng-leave {
+    -webkit-transition: .5s linear all;
+    -moz-transition: .5s linear all;
+    -ms-transition: .5s linear all;
+    -o-transition: .5s linear all;
+    transition: .5s linear all;
+}
+.page.ng-leave {
+    left: 0;
+    opacity: 1;
+}
+.page.ng-leave.ng-leave-active {
+    left: -100%;
+    opacity: 0;
+}
+.page.ng-enter {
+    left: 100%;
+    opacity: 0;
+}
+.page.ng-enter.ng-enter-active {
+    left: 0;
+    opacity: 1;
+}
+body{
+    position: relative;
+    overflow-x: hidden;
+}

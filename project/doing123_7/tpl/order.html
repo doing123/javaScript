@@ -1,0 +1,97 @@
+
+<div data-role="page" ng-controller="orderCtr">
+
+    <div data-role="header">
+        <h2>请填写信息</h2>
+    </div>
+
+    <div class="ui-content">
+
+        <form ng-hide="succMsg || errMsg">
+
+            <label for="name">姓名</label>
+            <input type="text" id="name" ng-model="order.user_name"/>
+
+            <label for="phone">电话</label>
+            <input type="text" id="phone" ng-model="order.phone"/>
+
+            <label for="address">住址</label>
+            <textarea name="address" id="address" ng-model="order.addr" ></textarea>
+
+            <fieldset data-role="controlgroup">
+
+                <legend>请选择性别</legend>
+                <label for="male">男</label>
+                <input type="radio" id="male" ng-model="order.sex"
+                       value="1" name="sex"/>
+
+                <label for="female">女</label>
+                <input type="radio" id="female" ng-model="order.sex"
+                       value="2" name="sex"/>
+
+            </fieldset>
+
+            <button ng-click="submitOrder()">我要下单</button>
+
+        </form>
+
+        <div  ng-show="errMsg">{{errMsg}}</div>
+        <div  ng-show="succMsg">{{succMsg}}</div>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+
+        <div data-role="navbar">
+
+            <ul>
+                <li><a href="../index.html" data-icon="home">主页</a></li>
+                <li><a href="myorder.html" data-icon="user">用户中心</a></li>
+                <li><a href="../index.html" data-icon="gear">设置</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<!--
+<div ng-include=" 'tpl/include/header.html' "></div>
+
+<div class="alert alert-info">
+    <form  ng-hide="succMsg || errMsg">
+        <div class="form-group">
+            <label for="user_name">收货人：</label>
+            <input class="form-control" id="user_name" type="text" ng-model="order.user_name"/>
+        </div>
+        <div class="form-group">
+            <label>性别：</label>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="sex" value="1"  ng-model="order.sex"/>男
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="sex" value="2" ng-model="order.sex"/>女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="user_name">电话号码：</label>
+            <input class="form-control" id="phone" type="text"  ng-model="order.phone"/>
+        </div>
+        <div class="form-group">
+            <label for="user_name">送餐地址：</label>
+            <textarea class="form-control" id="addr"  ng-model="order.addr"></textarea>
+        </div>
+
+        <input ng-click="submitOrder()" class="btn btn-success btn-block" type="button" value="提交订单"/>
+
+    </form>
+    <div class="alert alert-danger" ng-show="errMsg">{{errMsg}}</div>
+    <div class="alert alert-success"  ng-show="succMsg">{{succMsg}}</div>
+</div>
+
+<div ng-include=" 'tpl/include/footer.html' "></div>-->
