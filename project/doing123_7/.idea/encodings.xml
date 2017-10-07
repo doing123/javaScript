@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/data/dish_getbykw.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/dish_getbypage.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fonts/glyphicons-halflings-regular.eot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fonts/glyphicons-halflings-regular.svg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fonts/glyphicons-halflings-regular.ttf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fonts/glyphicons-halflings-regular.woff" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fonts/glyphicons-halflings-regular.woff2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jqm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/js/kaifanla.js" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,88 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>京东用户中心项目</title>
+		<style>
+			#my_lucky{
+				text-align:center;
+			}
+		</style>
+		<link rel="icon" href="img/favicon.ico">
+		<link href="jd.css" type="text/css" rel="Stylesheet" />
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="jd_detail.js"></script>
+	</head>
+	<body>
+		<section></section>
+		<div id="main">
+			<div id="left_nav">
+				<ul>
+					<li><h3>我的京东</h3></li>
+					<li><a href="#my_order" >我的订单</a></li>
+					<li><a href="#my_expense">消费记录</a></li>
+					<li class="active"><a href="#my_lucky">幸运抽奖</a></li>
+				</ul>
+			</div>
+			<div id="right_main">
+				<!--我的订单-->
+				<div id="my_order">
+					<table>
+						<thead>
+							<tr>
+								<th class="first-one">订单信息</th>
+								<th>收货人</th>
+								<th>订单金额</th>
+								<th><select name="" id="">
+									<option value="">最近三个月</option>
+									<option value="">最近一个月</option>
+									<option value="">最近一周</option>
+								</select></th>
+								<th><select name="" id="">
+									<option value="">等待收货</option>
+									<option value="">已完成</option>
+								</select></th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<ul id="subi" class="pager">
+					</ul>
+				</div>
+				<!--消费统计 -->
+				<div id="my_expense">
+					<canvas id="canvasBuyState" width='700' height='500'>
+						您的浏览器不支持canvas标签
+					</canvas>
+				</div>
+				<!--幸运抽奖-->
+				<div id="my_lucky"  class="active">
+					<canvas id="canvasLuckLottery" width='500' height='500'>
+						您的浏览器不支持canvas标签
+					</canvas><br>
+					<input type="button" value="点击抽奖" id="btLottery">	
+				</div>
+				
+			</div>
+			
+		</div>
+		<div id="foot">
+		</div>
+		<!--半透明遮罩层中有一个登陆框——模态框 -->
+		<div class="model"> <!--半透明的背景层-->
+			<div class="model-dialog"><!--定位和宽高-->
+				<div class="model-content"><!--登录-->
+					<h3>用户登录</h3>
+					<form id="login-form">
+						<input class="remind" value="请保管好您的注册信息，以防丢失。">
+						<input type="text" name="uname" value="强东"><br>
+						<input type="password" id="upwd" name="upwd" value="123456"><br>
+						<input id="btn" type="button" value="提交登录信息">
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="js/usercenter.js"></script>
+	</body>
+</html>
