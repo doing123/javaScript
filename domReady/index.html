@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM ready</title>
+</head>
+<body>
+<h1 id="header">这是一句h1语句。</h1>
+<script type="text/javascript" src="./domReady.js"></script>
+<script type="text/javascript">
+	myReady(function () {
+		document.getElementById("header").style.color = "red";
+	});
+</script>
+</body>
+</html>
