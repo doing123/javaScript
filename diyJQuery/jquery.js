@@ -22,7 +22,15 @@
 	 */
 	jQuery.fn = jQuery.prototype = {
 		init: function(arg) {
-
+			var elem;
+			if(arg){
+				//查询获得类数组对象
+				elem = document.querySelectorAll(arg);
+				this[0] = elem;
+				this.length = 1;
+			}
+			//链式调用
+			return this;
 		}
 	};
 
@@ -69,3 +77,5 @@ var obj = {name: 'doing123'};
 var obj1 = {age: 12};
 var obj2 = $.extend({}, obj1, obj);
 console.log(obj2);
+
+console.log($('#test'));
