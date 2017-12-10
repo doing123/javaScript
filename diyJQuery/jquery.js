@@ -8,12 +8,40 @@
 	return factory(global);
 })(this, function(global){
 	/**
+	 * 事件绑定处理函数
+	 * @param  {[type]} obj     元素对象
+	 * @param  {[type]} event   事件类型
+	 * @param  {[type]} handler 事件处理函数句柄
+	 * @return {[type]}         
+	 */
+	function myAddEvent(obj, event, handler){
+		if(obj.addEventListener){
+			obj.addEventListener(event, handler, false);
+		} else if(obj.attachEvent) {
+			obj.attachEvent('on' + event, handler);
+		} else {
+			obj['on' + event] = handler;
+		}
+	}
+
+	/**
 	 * 无new创建
 	 * @param  {[type]} arg 选择器
 	 * @return {[type]}     [description]
 	 */
 	var jQuery = function(arg) {
-		return new jQuery.fn.init(arg);
+		switch(typeof arg){
+			case 'function':
+				myAddEvent(window, 'load', arg);
+				break;
+			case 'string':
+				return new jQuery.fn.init(arg);
+				break;
+			case 'object':
+				//创建jquery对象
+				break;
+			default:
+		}
 	};
 
 	/**
@@ -79,3 +107,10 @@ var obj2 = $.extend({}, obj1, obj);
 console.log(obj2);
 
 console.log($('#test'));
+
+$(function(){
+	console.log(1);
+});
+$(function(){
+	console.log(2);
+});
