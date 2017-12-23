@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>你不知道的JavaScript上卷--控件类</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script type="text/javascript" src="./../js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	/**
+	 * 委托控件对象
+	 */
+	//组件基类
+	var Widget = {
+		init: function(height, width){
+			this.height = height || 50;
+			this.width = width || 50;
+			this.$elem = null;
+		},
+
+		insert: function($where){
+			if(this.$elem){
+				this.$elem.css({
+					height: this.height + 'px',
+					width: this.width + 'px'
+				}).appendTo($where);
+			}
+		}
+	};
+
+	if(!Object.create){
+		Object.create = function(obj){
+			function F(){}
+			F.prototype = obj;
+			return new F();
+		}
+	}
+
+	//按钮组件: Button ”继承“ Widget
+	var Button = Object.create(Widget);
+
+	Button.setup = function(height, width, label){
+		//委托调用
+		this.init(height, width);
+		this.label = label || 'Default';
+
+		this.$elem = $('<button>').text(this.label);
+	};
+
+	Button.build = function($where){
+		//委托调用
+		this.insert($where);
+		this.$elem.click(this.onClick.bind(this));
+	};
+
+	Button.onClick = function(event){
+		console.log('Button ' + this.label + ' clicked!');
+	}
+
+	$(document).ready(function(){
+		var $body = $(document.body);
+
+		//实现构造和初始化分开
+		var btn1 = Object.create(Button);
+		btn1.setup(30, 125, 'hello');
+
+		var btn2 = Object.create(Button);
+		btn2.setup(40, 150, 'world');
+
+		btn1.build($body);
+		btn2.build($body);
+	});
+
+	//
+
+	//重写基类的 render 方法
+	
+</script>
+</body>
+</html>
