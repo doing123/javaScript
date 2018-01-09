@@ -30,7 +30,7 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPhone">手机号码</label>
-	    <input type="email" class="form-control" id="exampleInputPhone" placeholder="phone"
+	    <input type="text" class="form-control" id="exampleInputPhone" placeholder="phone"
 	    	data-qq-regexp="^1\d{10}$"
 	    	data-qq-regexp-message="请输入合法的手机号码"
 	    	data-qq-required="true"
@@ -62,7 +62,15 @@
 	<script src="./js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="./js/formUnify.js"></script>
 	<script type="text/javascript">
+		// 调用插件
 		$('form').validate();
+
+		// 扩展插件方法
+		$.fn.validate.extendFn({
+			'max-length': function(data){
+				return this.val().length <= data;
+			}
+		})
 	</script>
 </body>
 </html>

@@ -2,34 +2,32 @@
 (function(window, factory, plugin){
 	factory(jQuery, plugin);
 })(this, function(jQuery, plugin){
-	// jquery扩展插件
-	$.fn[plugin] = function(options){
-		var DEFAULT = {
-			defualtEvent: 'input',
-			plugin: 'qq'
-		};
+	var DEFAULT = {
+		defualtEvent: 'input',
+		plugin: 'qq'
+	};
 
-		var RULES = {
-			regexp: function(data){
-				return new RegExp(data).test(this.val());
-			},
-			required: function(data){
-				return this.val();
-			},
-			'min-length': function(data){
-				return this.val().length >= data;
-			},
-			'confirm': function(data){
-				var pwdElement = $('[type=password]')[0];
-				if(pwdElement.value === '' || this.val() !== pwdElement.value){
-					return false;
-				} else {
-					return true;
-				}
+	var RULES = {
+		regexp: function(data){
+			return new RegExp(data).test(this.val());
+		},
+		required: function(data){
+			return this.val();
+		},
+		'min-length': function(data){
+			return this.val().length >= data;
+		},
+		'confirm': function(data){
+			var pwdElement = $('[type=password]')[0];
+			if(pwdElement.value === '' || this.val() !== pwdElement.value){
+				return false;
+			} else {
+				return true;
 			}
 		}
-
-
+	}
+	// jquery扩展插件
+	$.fn[plugin] = function(options){
 		if(!this.is('form')){
 			return;
 		}
@@ -53,5 +51,17 @@
 				}
 			});
 		});
+
+		// 提交表单
+		var _this = this;
+		this.on('submit', function(){
+			_this.$elem.trigger(_this.defualtEvent);
+			return false;
+		});
 	};
+
+	// 扩展方法
+	$.fn[plugin].extendFn = function(options){
+		$.extend(RULES, options);
+	}
 }, 'validate');
