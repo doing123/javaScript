@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery插件--form表单验证</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: '微软雅黑'；
+		}
+
+		.formBox{
+			width: 800px;
+			border: 1px solid #ddd;
+			margin: 50px auto 0;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<form class="formBox">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
+	    	data-qq-regexp="^\w+@\w+\.\w+$"
+	    	data-qq-regexp-message="请输入合法的邮箱地址"
+	    	data-qq-required="true"
+	    	data-qq-required-message="邮箱地址不能为空。">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPhone">手机号码</label>
+	    <input type="email" class="form-control" id="exampleInputPhone" placeholder="phone"
+	    	data-qq-regexp="^1\d{10}$"
+	    	data-qq-regexp-message="请输入合法的手机号码"
+	    	data-qq-required="true"
+	    	data-qq-required-message="手机号码不能为空。">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+	    	data-qq-regexp="^\w+$"
+	    	data-qq-regexp-message="密码不合法(由字母数字下划线组成)"
+	    	data-qq-required="true"
+	    	data-qq-required-message="密码不能为空。"
+	    	data-qq-min-length="8"
+	    	data-qq-min-length-message="密码长度不能小于8位。"
+	    	data-qq-max-length="18"
+	    	data-qq-max-length-message="密码长度不能大于18位。">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+	    	data-qq-confirm=true
+	    	data-qq-confirm-message="密码前后不一致。"
+	    	data-qq-required="true"
+	    	data-qq-required-message="密码不能为空。">
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+	<script src="./js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="./js/formUnify.js"></script>
+	<script type="text/javascript">
+		$('form').validate();
+	</script>
+</body>
+</html>
