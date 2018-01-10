@@ -94,6 +94,38 @@
 		return target;
 	};
 
+	// 扩展工具函数--jquery静态方法
+	$.extend({
+		// 类数组转为数据(arguments/nodeList)
+		makeArray: function(nodeList){
+			var result = [];
+			if(nodeList || nodeList.length >= 1){
+				// 合并数组
+				return jQuery.merge(result, nodeList);
+			}
+		},
+
+		// 合并数组
+		merge: function(arr, nodeList){
+			var i = arr.length;
+			var l = nodeList.length;
+			var j = 0;
+
+			if(typeof nodeList.length === 'number'){
+				for(; j < l; j++){
+					arr[i++] = nodeList[j];
+				}
+			} else { // TODO: 不为 number
+				while(nodeList[j] !== undefined){
+					arr[i++] = nodeList[j++];
+				}
+			}
+
+			// 修正arr的length
+			return arr;
+		}
+	});
+
 	jQuery.fn.init.prototype = jQuery.fn;
 
 	global.$ = global.jQuery = jQuery;
