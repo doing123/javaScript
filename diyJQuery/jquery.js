@@ -95,7 +95,7 @@
 	};
 
 	// 扩展工具函数--jquery静态方法
-	$.extend({
+	jQuery.extend({
 		// 类数组转为数据(arguments/nodeList)
 		makeArray: function(nodeList){
 			var result = [];
@@ -146,3 +146,6 @@ $(function(){
 $(function(){
 	console.log(2);
 });
+
+var result = $.merge([{},'aa'], ['tt',[]]);
+console.log(result);
