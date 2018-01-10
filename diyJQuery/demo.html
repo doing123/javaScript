@@ -5,10 +5,27 @@
 	<meta charset="utf-8">
 </head>
 <body>
-<div id="test">test</div>
-<script type="text/javascript" src="jquery.js"></script>
+<!-- <div id="test">test</div> -->
+
+<div id='app'>
+	<p v-model='message'></p>
+	<input type="" name="" v-model='message'>
+
+	<p v-model='list'></p>
+	<input type="" name="" v-model='list'>
+</div>
+
+<!-- <script type="text/javascript" src="jquery.js"></script> -->
+<script type="text/javascript" src="vue-1.0.js"></script>
 <script type="text/javascript">
-	
+	new Vue({
+		elem: '#app',
+		data: {
+			message: 'doing123',
+			result: 'isResult',
+			list: 'test'
+		}
+	});
 </script>
 </body>
 </html>
