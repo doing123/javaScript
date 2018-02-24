@@ -1,9 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>双向数据绑定</title>
+	<meta charset="UTF-8">
+	<title>手写脏值检测</title>
+	<style type="text/css">
+	button{
+		height: 60px;
+		width: 100px;
+	}
+	p {
+		margin-left: 20px;
+	}
+</style>
 </head>
 <body>
+	<!--dirty-checker-0.2.js-->
+	<!--<div>
+		<button ng-click="increase">增加</button>
+		<button ng-click="decrease">减少</button>
+		数量： <span ng-bind="data"></span>
+	</div>
+	<br>
+	合计 = <span ng-bind="sum"></span>-->
 
+	<div>
+		<button ng-click="increaseSprite">增加</button>
+		<button ng-click="decreaseSprite">减少</button>
+		雪碧：<span ng-bind="sprite"></span>
+	</div>
+	<div>
+		<button ng-click="increaseCola">增加</button>
+		<button ng-click="decreaseCola">减少</button>
+		可乐：<span ng-bind="cola"></span>
+	</div>
+	合计 = <span ng-bind="sum"></span>
+
+	<!--<script src="./js/dirty-checker-0.1.js"></script>-->
+	<!--<script src="./js/dirty-checker-0.2.js"></script>-->
+	<!--<script src="./js/dirty-checker-0.3.js"></script>-->
+	<script src="./js/dirty-checker-0.4.js"></script>
 </body>
 </html>
