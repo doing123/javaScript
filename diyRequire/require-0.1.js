@@ -99,7 +99,8 @@
     /**
      * define 定义模块
      */
-    var moduleMap = [];
+    // var moduleMap = [];
+    var moduleMap = {};
     function define(name, deps, callback) {
         moduleMap[name] = {};
         moduleMap[name].callback = callback;
