@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS类型检测</title>
+</head>
+<body>
+<script src="./typeDetection.js"></script>
+<script>
+    // 保存引用类型的类型映射
+    var class2type = {};
+    'Boolean Number String Function Array Date RegExp Object Error Null Undefined'.split(' ').map(
+        function(item, index){
+            class2type['[object ' + item + ']'] = item.toLowerCase();
+        }
+    );
+
+    function type(obj) {
+        // IE678下，null和undefined 使用Object.prototype.toString.call(obj)返回[object object]
+        if(obj == null){
+            return obj + '';
+        }
+
+        return typeof obj === 'object' || typeof obj === 'function'
+            ? class2type[Object.prototype.toString.call(obj)] || 'object' // call改变this的指向,'object'兼容window等
+            : typeof obj;
+    }
+
+    console.log(type('doing'));
+    console.log(type([]));
+    console.log(type(window)); // map、window
+
+    // 在type的基础上进一步封装
+    function isFunction(obj) {
+        return type(obj) === 'function'
+    }
+
+    console.log('进一步封装后：' + $.type('doing'));
+    console.log($.type([]));
+    console.log($.type(window)); // map、window
+</script>
+</body>
+</html>
