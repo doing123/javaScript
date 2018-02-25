@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手写模块加载器</title>
+</head>
+<body>
+<script src="./require-0.1.js"></script>
+<script>
+    QMD.use(['a', 'b'], function (a, b) {
+        a.decrease();
+        b.add();
+    });
+</script>
+</body>
+</html>
