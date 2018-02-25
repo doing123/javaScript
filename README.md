@@ -1,5 +1,8 @@
 # javaScript
 
+### http://www.ecma-international.org/ecma-262/6.0/index.html
+### https://es5.github.io/
+
 ### chrome extensions
 
 ### DIY a jQuery
