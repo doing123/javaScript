@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>让代码有思想，让函数有记忆</title>
+</head>
+<body>
+<script src="./funcMemory.js"></script>
+<script>
+    var count = 0;
+    var fibonacci = function (n) {
+        count++;
+        return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+    };
+    fibonacci = $.memorize(fibonacci);
+    fibonacci(10);
+    console.log(count);
+
+    // memorize一次执行只缓存一个内容，而这里最多缓存了三个内容
+    /*var fabonacci = (function () {
+        var memory = {};
+        return function (n) {
+            count++;
+            if(n == 0 || n == 2){
+                return n;
+            }
+            if(memory[n-2] === undefined){
+                memory[n-2] = fibonacci(n-2);
+            }
+            if(memory[n-1] === undefined){
+                memory[n-1] = fabonacci(n-1);
+            }
+            return memory[n] = memory[n-1] + memory[n-2];
+        }
+    })();*/
+
+</script>
+</body>
+</html>
