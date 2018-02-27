@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鄙视题</title>
+</head>
+<body>
+<script>
+    var name = 'A';
+    function getName() {
+        console.log(this);
+        // caller: 所有类型为function的对象，全都有caller属性，当前函数在哪个函数里面调用的
+        // callee: 所有arguments对象都有callee属性，当前arguments对象是哪个函数的参数对象
+        // 当函数被调用时，它的arguments.callee对象就会指向自身，也就是一个对自己的引用。
+        return this.name;
+    }
+    var obj = {
+        name: 'B',
+        getName: function () {
+            return this.name;
+        },
+        showName: function (a) {
+            console.log(getName()); // A
+            console.log(a); // A
+            // a === arguments; // true
+            // arguments对象是函数在调用过程中产生的闭包中的内置对象
+            /**
+             * 只有函数被调用时，arguments对象才会创建，未调用时其值为null：
+             * alert(new Function().arguments);//return null
+             */
+            console.log(arguments[0]()); // undefined: this=>arguments对象调用
+        }
+    };
+
+</script>
+</body>
+</html>
