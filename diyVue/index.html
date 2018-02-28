@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue源码解析</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="text">
+    {{text}}
+</div>
+<script>
+    function createNode(obj) {
+        var flag = document.createDocumentFragment();
+        var child;
+        while(child = obj.firstChild){ // 为什么使用while?
+            // 扫描，节点劫持
+            flag.appendChild(child);
+        }
+        return flag;
+    }
+
+    var dom = createNode(document.getElementById('app'));
+    console.log(dom);
+</script>
+</body>
+</html>
