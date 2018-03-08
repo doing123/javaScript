@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鄙视题2</title>
+</head>
+<body>
+<script>
+    /**
+     * 函数和类
+     * 原型链
+     * 运算符优先级
+     * 作用域
+     * 变量提升
+     */
+    function Foo() {
+        getName = function () {
+            console.log(1);
+        };
+        return this;
+    }
+    Foo.getName = function () {
+        console.log(2);
+    };
+    Foo.prototype.getName = function () {
+        console.log(3);
+    };
+    var getName = function () {
+        console.log(4);
+    };
+    function getName() {
+        console.log(5);
+    }
+
+    Foo.getName(); // 2
+    getName(); // 4
+    Foo().getName(); // 1
+    getName(); // 1
+    new Foo.getName(); // 2
+    new Foo().getName(); // 3 // 是否理解为：如果.前面有()就执行，如果此时执行的表达式前面有new（new Foo作为一个表达式整体来执行）
+    new new Foo().getName(); // 3 // 先执行new Foo().getName()，再new
+
+    /**
+     * new 运算符
+     * new Foo.getName(); // Foo.getName();默认返回 undefined，为什么new 之后返回一个对象呢？？？
+     * 答：
+     * 当代码 new Foo(...) 执行时，会发生以下事情：
+     *     1.一个继承自 Foo.prototype 的新对象被创建。 // 创建一个继承自Foo.getName.prototype 的新对象
+     *     2.使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。
+     *          new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。
+     *     3.由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。
+     *          （一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）
+     */
+
+</script>
+</body>
+</html>
