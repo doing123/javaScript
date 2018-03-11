@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .list {
+            margin: 20px;
+        }
+        .list li{
+            margin: 10px;
+        }
+        .del{
+            padding: 10px;
+        }
+        .del:hover {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul class="list">
+    <li>第一行<span class="del">X</span></li>
+    <li>第二行<span class="del">X</span></li>
+    <li>第三行<span class="del">X</span></li>
+    <li>第四行<span class="del">X</span></li>
+    <li>第五行<span class="del">X</span></li>
+</ul>
+<script>
+    function List(sel) {
+        this.elem = Array.prototype.slice.call(document.querySelectorAll(sel), 0);
+        this.addEvent = function (type) {
+            var type = type || 'click';
+            var self = this;
+            this.elem.forEach(item => {
+                item.addEventListener(type, function (e) {
+                    if(e.target.className.indexOf('del') > -1){
+                        self.removeItem.call(self, e.target);
+                    }
+                });
+            });
+        };
+        this.removeItem = function (target) {
+            var self = this;
+            var findParent = function (node) {
+                var parent = node.parentNode;
+                var root = self.elem.find(item => item === parent);
+                if(root){
+                    root.removeChild(node);
+                } else {
+                    findParent(parent);
+                }
+            };
+            findParent(target);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+        var list = new List('.list');
+        list.addEvent();
+        /*list.elem.forEach(function (item) {
+            list.addEvent(item);
+        });*/
+    });
+</script>
+</body>
+</html>

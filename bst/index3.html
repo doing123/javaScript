@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .list {
+            margin: 20px;
+        }
+        .list li{
+            margin: 10px;
+        }
+        .del{
+            padding: 10px;
+        }
+        .del:hover {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul class="list">
+    <li>第一行<span class="del">X</span></li>
+    <li>第二行<span class="del">X</span></li>
+    <li>第三行<span class="del">X</span></li>
+    <li>第四行<span class="del">X</span></li>
+    <li>第五行<span class="del">X</span></li>
+</ul>
+<script>
+    class List {
+        constructor (sel) {
+            this.elem = Array.from(document.querySelectorAll(sel));
+            let self = this;
+            this.elem.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    if(e.target.className.indexOf('del') > -1){
+                        self.removeItem.call(self, e.target);
+                    }
+                });
+            });
+        }
+        removeItem (target) {
+            let self = this;
+            let findParent = function (node) {
+                let parent = node.parentNode;
+                let root = self.elem.find(item => item === parent);
+                if(root){
+                    root.removeChild(node);
+                } else {
+                    findParent(parent);
+                }
+            };
+            findParent(target);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+        new List('.list');
+    });
+</script>
+</body>
+</html>

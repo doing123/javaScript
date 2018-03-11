@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js算法--递归</title>
+</head>
+<body>
+<section>
+
+</section>
+<script>
+    function flat(array) {
+        var result = [];
+        var each = function (arr) {
+            arr.forEach(item => {
+                if (item instanceof Array) {
+                    each(item);
+                } else {
+                    result.push(item);
+                }
+            });
+        };
+        each(array);
+        return result.join(',');
+    }
+
+    var arr = ['a', ['b', 'c'], 2, ['d', 'e', 'f'], 'g', 3, 4];
+    // ['a', ['b', 'c'], 2, ['d', 'e', 'f'], 'g', 3, 4].join(','); // "a,b,c,2,d,e,f,g,3,4"
+    // ['a', ['b', 'c'], 2, ['d', 'e', 'f'], 'g', 3, 4].join('--'); // "a--b,c--2--d,e,f--g--3--4"
+    console.log(flat(arr));
+</script>
+</body>
+</html>

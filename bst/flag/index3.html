@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js算法--格式转换</title>
+</head>
+<body>
+<section>
+
+</section>
+<script>
+    // valueOf,再调toString,格式转换
+    var arr = ['a', ['b', 'c'], 2, ['d', 'e', 'f'], 'g', 3, 4];
+    // 遍历器
+    Array.prototype[Symbol.iterator] = function () {
+        let arr = [].concat(this);
+        let getFirst = (array) => {
+            let first = array.shift();
+            return first;
+        };
+        return {
+            next : function () {
+                let item = getFirst(arr);
+                if(item) {
+                    return {
+                        value: item,
+                        done: false
+                    };
+                } else {
+                    return {
+                        done: true
+                    };
+                }
+            }
+        };
+    };
+    var flat = function (arr) {
+      let r = [];
+      for(let i of arr){
+          r.push(i);
+      }
+      return r.join(',');
+    };
+    console.log(flat(arr));
+</script>
+</body>
+</html>
