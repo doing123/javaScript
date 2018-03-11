@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mvvm实现</title>
+    <style>
+        #app {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>{{title}}</h2>
+    <input type="text" v-model="name">
+    <h1>{{name}}</h1>
+    <button v-on:click="clickMe">click me!</button>
+</div>
+<script src="./js/observer.js"></script>
+<script src="./js/watcher.js"></script>
+<script src="./js/compile.js"></script>
+<script src="./js/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'mvvm 学习源码实现',
+            name: 'learn'
+        },
+        methods: {
+            clickMe: function () {
+                this.title = 'mvvm code click';
+            }
+        },
+        mounted: function () {
+            window.setTimeout(() => {
+                this.title = 'timeout 1000ms';
+            }, 1000);
+        }
+    });
+</script>
+</body>
+</html>
