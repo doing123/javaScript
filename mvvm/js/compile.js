@@ -78,7 +78,7 @@ Compile.prototype = {
     },
     compileModel: function (node, vm, exp, dir) { // v-model：双向数据绑定
         var self = this;
-        var val = this.vm[exp]; // TODO: this.vm = vm
+        var val = this.vm[exp]; // this.vm = vm
         this.modelUpdater(node, val); // input输入框赋值v-model属性值对应的值
         new Watcher(this.vm, exp, function (value) { // 实例化一个监听器
             self.modelUpdater(node, value);
