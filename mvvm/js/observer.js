@@ -18,7 +18,7 @@ Observer.prototype = {
             enumerable: true,
             configurable: true,
             get: function getter() {
-                if (Dep.target) { // new Watcher实例
+                if (Dep.target) { // new Watcher 实例
                     dep.addSub(Dep.target);
                 }
                 return val;
