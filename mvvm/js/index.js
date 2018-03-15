@@ -9,14 +9,17 @@ function Vue(options) {
         self.proxyKeys(key);
     });
 
-    observe(this.data);
+    // 观察者，监听数据
+    observe(this.data); // return new Observer(value);
+
+    // 模板编译
     new Compile(options.el, this);
     options.mounted.call(this); // 所有事情处理好后执行mounted函数
 }
 
 Vue.prototype = {
     proxyKeys: function (key) {
-        var self = this;
+        var self = this; //new Vue的实例
         Object.defineProperty(this, key, { // this.data对象里的属性和值，赋值到this上，即new Vue()实例上
             enumerable: false,
             configurable: true,

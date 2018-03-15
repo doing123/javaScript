@@ -9,9 +9,9 @@ function Compile(el, vm) { // vm -> this -> new Vue的实例
 Compile.prototype = {
     init: function () {
         if(this.el){
-            this.fragment = this.nodeToFragment(this.el);
-            this.compileElement(this.fragment);
-            this.el.appendChild(this.fragment);
+            this.fragment = this.nodeToFragment(this.el); // 创建文档片段：并把this.el组装到文档片段
+            this.compileElement(this.fragment); // 编译
+            this.el.appendChild(this.fragment); // 插入元素
         } else {
             console.log('Dom元素不存在');
         }

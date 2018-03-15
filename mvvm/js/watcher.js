@@ -26,6 +26,7 @@ Watcher.prototype = {
         Dep.target = this;
         // 取值查询操作，强制执行监听器里的get函数，获得v-model属性值所对应的实例化vue的data里的值
         // 即 observer.js里20行的getter操作
+        // 同时把new Watcher 实例自身存入dep.addSub(Dep.target);
         var value = this.vm.data[this.exp];
         Dep.target = null;
         return value;
