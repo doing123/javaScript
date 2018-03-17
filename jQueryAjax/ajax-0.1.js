@@ -42,15 +42,16 @@
             function empty() {
 
             }
+
             function obj2Url(obj) {
-                if(obj && obj instanceof Object){
+                if (obj && obj instanceof Object) {
                     var arr = [];
-                    for(var i in obj){
-                        if(obj.hasOwnProperty(i)){
-                            if(typeof obj[i] === 'function'){
+                    for (var i in obj) {
+                        if (obj.hasOwnProperty(i)) {
+                            if (typeof obj[i] === 'function') {
                                 obj[i] = obj[i]();
                             }
-                            if(obj[i] === null){
+                            if (obj[i] === null) {
                                 obj[i] = '';
                             }
                             arr.push(escape(i) + '=' + escape(obj[i]));
@@ -61,6 +62,7 @@
                     return obj;
                 }
             }
+
             var config = {
                 url: '',
                 sync: true,
@@ -84,30 +86,30 @@
             var abortTimeout = null;
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
-                if(xhr.readyState === 4){
+                if (xhr.readyState === 4) {
                     xhr.onreadystatechange = empty;
                     clearTimeout(abortTimeout);
                     var result, dataType, error = false;
-                    if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || (xhr.status ===0)){
-                        if(xhr.responseType === 'arraybuffer' || xhr.responseType === 'blob'){
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || (xhr.status === 0)) {
+                        if (xhr.responseType === 'arraybuffer' || xhr.responseType === 'blob') {
                             result = xhr.response;
                         } else {
                             result = xhr.responseText;
                             dataType = opt.dataType ? opt.dataType : xhr.getResponseHeader('content-type');
-                            for(var i in accepts){
-                                if(accepts.hasOwnProperty(i) && accepts[i].indexOf(dataType) > -1){
+                            for (var i in accepts) {
+                                if (accepts.hasOwnProperty(i) && accepts[i].indexOf(dataType) > -1) {
                                     dataType = i;
                                 }
                             }
-                            try{
-                                if(dataType === 'script'){
+                            try {
+                                if (dataType === 'script') {
                                     eval(result);
-                                } else if(dataType === 'xml'){
+                                } else if (dataType === 'xml') {
                                     result = xhr.responseXML;
-                                } else if(dataType === 'json'){
+                                } else if (dataType === 'json') {
                                     result = result.trim() === '' ? null : JSON.parse(result);
                                 }
-                            } catch (e){
+                            } catch (e) {
                                 opt.error(e);
                                 xhr.abort();
                             }
@@ -119,17 +121,17 @@
                 }
             };
 
-            if(opt.method === 'GET'){
+            if (opt.method === 'GET') {
                 var parse = opt.url;
                 opt.data = jQuery.extend({}, opt.data);
                 opt.url = parse + '?' + obj2Url(opt.data);
                 opt.data = null;
             }
             xhr.open(opt.method, opt.url, opt.sync, opt.username, opt.password);
-            if(opt.method === 'POST'){
+            if (opt.method === 'POST') {
                 xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
             }
-            if(opt.timeout > 0){
+            if (opt.timeout > 0) {
                 abortTimeout = setTimeout(function () {
                     xhr.onreadystatechange = empty;
                     xhr.abort();
