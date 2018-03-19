@@ -1,4 +1,4 @@
-
+// 外部资源全部加载完成
 window.onload = function () {
     'use strict';
     var scope = {
@@ -24,13 +24,14 @@ window.onload = function () {
         this.$$watchList = [];
     }
 
+    // watch 监听
     Scope.prototype.$watch = function (name, getNewValue, listener) {
         var watch = {
             name: name,
             getNewValue: getNewValue,
             listener: listener
         };
-
+        // 保存的监听列表
         this.$$watchList.push(watch);
     };
 
@@ -41,6 +42,7 @@ window.onload = function () {
         while(dirty){
             dirty = false;
             var list = this.$$watchList;
+            // 遍历监听的事件队列
             for(var i = 0; i < list.length; i++){
                 var watch = list[i];
                 console.log(watch);
@@ -52,7 +54,7 @@ window.onload = function () {
                 } else {
                     scope[watch.name] = newValue; // 赋值给变量
                 }
-
+                // 更新last的值
                 watch.last = newValue;
             }
             checkTime++;
@@ -63,6 +65,7 @@ window.onload = function () {
     };
 
     var $scope = new Scope();
+    // 添加监听的对象到$$watchList
     $scope.$watch('sprite', function(){
         $scope.sprite = scope.sprite;
         return $scope[this.name];
@@ -84,6 +87,7 @@ window.onload = function () {
         console.log('sum: newValue ' + newValue + '--' + 'oldValue ' + oldValue);
     });
 
+    // 绑定事件触发脏值检查
     function bind() {
         var list = document.querySelectorAll('[ng-click]');
         for(var i = 0, l = list.length; i < l; i++){
@@ -97,6 +101,7 @@ window.onload = function () {
         }
     }
 
+    // $apply--更新视图
     function apply() {
         $scope.$digest();
         var list = document.querySelectorAll('[ng-bind]');
