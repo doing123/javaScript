@@ -9,18 +9,18 @@
 </head>
 <body>
 <script>
-    Function.prototype.call2 = function(context) {
+    Function.prototype.call2 = function (context) {
         var context = context || window;
         // 首先要获取调用call的函数，用this可以获取
         context.fn = this;
 
         var args = [];
-        for(var i = 1, len = arguments.length; i < len; i++) {
+        for (var i = 1, len = arguments.length; i < len; i++) {
             args.push('arguments[' + i + ']');
         }
 
         // 这里 args 会自动调用 Array.toString() 这个方法。
-        var result = eval('context.fn(' + args +')');
+        var result = eval('context.fn(' + args + ')');
 
         delete context.fn;
         return result;
@@ -42,7 +42,7 @@
             result = eval('context.fn(' + args + ')')
         }
 
-        delete context.fn
+        delete context.fn;
         return result;
     };
 </script>
