@@ -14,20 +14,21 @@
     function loadImg(src) {
         var promise = new Promise(function (resolve, reject) {
             var img = document.createElement('img');
-            throw new Error('自定义错误');
+            // throw new Error('自定义错误'); // 语法错误
 
             img.onload = function () {
                 resolve(img);
             };
             img.onerror = function () {
-                reject();
+                reject('图片加载失败。'); // 图片加载失败
             };
             img.src = src;
         });
         return promise;
     }
 
-    var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
+    // var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
+    var src = 'http://static.mukewang.com/static/img/common/logo1.png?t=2.4';
     var result = loadImg(src);
     /*result.then(function (img) {
         console.log(img.width);
