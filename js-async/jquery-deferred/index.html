@@ -20,17 +20,23 @@
                 // d.reject(); // 表示异步任务失败或出错
             };
             setTimeout(task, 2000);
-            return d;
+            // return d; // 返回 deferred对象：没有限制触发resolve和reject方法
+            return d.promise(); // 返回 promise 对象：只有监听的权利
         };
 
         return wait(d);
     }
 
     var w = waitHandle();
+    // w.reject(); // promise 没有reject
     w.then(function () {
         console.log('ok 1');
     }, function () {
         console.log('err 1');
+    }).then(function () {
+        console.log('ok 2');
+    }, function () {
+        console.log('err 2');
     }); // w.done w.fail
 </script>
 </body>

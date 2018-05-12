@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise用法</title>
+    <!--支持promise A+规范-->
+    <!--<script src="https://cdn.bootcss.com/bluebird/3.5.1/bluebird.min.js"></script>-->
+</head>
+<body>
+<script>
+    function loadImg(src) {
+        var promise = new Promise(function (resolve, reject) {
+            var img = document.createElement('img');
+            img.onload = function () {
+                resolve(img);
+            };
+            img.onerror = function () {
+                reject();
+            };
+            img.src = src;
+        });
+        return promise;
+    }
+
+    var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
+    var result = loadImg(src);
+    result.then(function (img) {
+        console.log(img.width);
+    }, function (error) {
+        console.log(error);
+    });
+</script>
+</body>
+</html>
