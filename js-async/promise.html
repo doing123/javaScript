@@ -14,6 +14,8 @@
     function loadImg(src) {
         var promise = new Promise(function (resolve, reject) {
             var img = document.createElement('img');
+            throw new Error('自定义错误');
+
             img.onload = function () {
                 resolve(img);
             };
@@ -27,10 +29,19 @@
 
     var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
     var result = loadImg(src);
-    result.then(function (img) {
+    /*result.then(function (img) {
         console.log(img.width);
     }, function (error) {
         console.log(error);
+    });*/
+    result.then(function (img) {
+        console.log(1, img.width);
+        return img; // 必须加上
+    }).then(function (img) {
+        console.log(2, img.height);
+    }).catch(function (e) {
+        console.log(e);
+        console.log('统一捕获异常');
     });
 </script>
 </body>
