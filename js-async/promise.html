@@ -27,15 +27,15 @@
         return promise;
     }
 
-    // var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
-    var src = 'http://static.mukewang.com/static/img/common/logo1.png?t=2.4';
+    var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
+    // var src = 'http://static.mukewang.com/static/img/common/logo1.png?t=2.4';
     var result = loadImg(src);
     /*result.then(function (img) {
         console.log(img.width);
     }, function (error) {
         console.log(error);
     });*/
-    result.then(function (img) {
+    /*result.then(function (img) {
         console.log(1, img.width);
         return img; // 必须加上
     }).then(function (img) {
@@ -43,6 +43,18 @@
     }).catch(function (e) {
         console.log(e);
         console.log('统一捕获异常');
+    });*/
+
+    // 串联操作，链式调用
+    var src2 = 'http://img4.mukewang.com/55f93f980001f52125001408-240-135.jpg';
+    var result2 = loadImg(src2);
+    result.then(function (img1) {
+        console.log('第一个图片加载完成', img1.width);
+        return result2; // 必须
+    }).then(function (img2) {
+        console.log('第二个图片加载完成', img2.width);
+    }).catch(function (e) {
+        console.log(e);
     });
 </script>
 </body>
