@@ -8,9 +8,22 @@
     <title>Document</title>
 </head>
 <body>
-<script src="./my-zepto.js"></script>
+<p>test1</p>
+<p>test2</p>
+<p>test3</p>
+<div id="box">
+    <p>test in div.</p>
+</div>
+<!--<script src="./my-zepto.js"></script>-->
+<script src="./my-jquery.js"></script>
 <script>
+    var $p = $('p');
+    $p.css('color', 'red');
+    console.log($p.html());
 
+    var $box = $('#box');
+    $box.css('color', 'blur');
+    console.log($box.html());
 </script>
 </body>
 </html>

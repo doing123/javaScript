@@ -26,12 +26,13 @@
     window.$ = $;
 
     $.fn = {
+        constructor: zepto.Z,
         css: function () {
-
+            console.log('css...');
         },
         html: function () {
-
+            console.log('html...');
         }
-    }
-    Z.prototype = $.fn;
+    };
+    zepto.Z.prototype = Z.prototype = $.fn;
 })(window);
