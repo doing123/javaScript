@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js单线程和异步</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    /*var ajax = $.ajax({
+        url: '../fixture/data.json',
+        success: function () {
+            console.log('success 1');
+        },
+        error: function () {
+            console.log('error 1');
+        }
+    });*/
+
+    // 对修改封闭，对扩展开放
+    var ajax = $.ajax('../fixture/data.json');
+    /*ajax.done(function () {
+        console.log('success 1');
+    }).fail(function () {
+        console.log('fail 1');
+    }).fail(function () {
+        console.log('fail 2');
+    }).done(function () {
+        console.log('success 2');
+    }).fail(function () {
+        console.log('fail 3');
+    }).done(function () {
+        console.log('success 3');
+    });*/
+
+    ajax.then(function () {
+        console.log('success 1');
+    }, function () {
+        console.log('fail 1');
+    }).then(function () {
+        console.log('success 2');
+    }, function () {
+        console.log('fail 2');
+    });
+
+</script>
+</body>
+</html>
