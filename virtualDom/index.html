@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>虚拟DOM：jQuery实现</title>
+</head>
+<body>
+<button id="btn-change">点击改变</button>
+<div id="container"></div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var data = [
+        {
+            name: 'doing1',
+            age: 20,
+            address: '深圳'
+        },
+        {
+            name: 'doing2',
+            age: 21,
+            address: '广州'
+        }
+    ];
+
+    // 渲染函数
+    function render(data) {
+        var $container = $('#container');
+
+        // 清空容器
+        $container.html('');
+
+        // 拼接 table
+        var $table = $('<table>');
+        $table.append($('<tr><td>name</td><td>age</td><td>address</td></tr>'));
+        data.forEach(function (item) {
+            $table.append($('<tr><td>' + item.name + '</td><td>' + item.age + '</td><td>' + item.address + '</td></tr>'));
+        });
+
+        // 渲染页面
+        $container.append($table); // 放在后面，一起添加到dom树，性能更好
+    }
+
+    $('#btn-change').click(function () {
+        data[1].age = 22;
+        data[0].address = '新乡';
+
+        // re-render: 再次渲染
+        render(data);
+    });
+
+    // 页面加载完立即执行（初次执行）
+    render(data);
+</script>
+
+</body>
+</html>

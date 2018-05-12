@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es7:async 和 await</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/babel-polyfill/7.0.0-beta.46/polyfill.min.js"></script>
+<script>
+    function loadImg(src) {
+        var promise = new Promise(function (resolve, reject) {
+            var img = document.createElement('img');
+            // throw new Error('自定义错误'); // 语法错误
+
+            img.onload = function () {
+                resolve(img);
+            };
+            img.onerror = function () {
+                reject('图片加载失败。'); // reject() 图片加载失败
+            };
+            img.src = src;
+        });
+        return promise;
+    }
+
+    var src = 'http://static.mukewang.com/static/img/common/logo.png?t=2.4';
+    var src2 = 'http://img4.mukewang.com/55f93f980001f52125001408-240-135.jpg';
+
+    const load = async function () {
+        const result1 = await loadImg(src);
+        console.log('result1', result1);
+
+        const result2 = await loadImg(src2);
+        console.log('result2', result2);
+    }
+    load();
+</script>
+</body>
+</html>
