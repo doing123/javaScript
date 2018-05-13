@@ -6,21 +6,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>to-do-list by vue</title>
+    <script src="./vue-2.5.13.js"></script>
 </head>
 <body>
-    <div id="app">
-        <div>
-            <input type="text" v-model="title">
-            <button v-on:click="add">submit</button>
-        </div>
-        <div>
-            <ul>
-                <li v-for="item in list">{{item}}</li>
-            </ul>
-        </div>
+<div id="app">
+    <div>
+        <input type="text" v-model="title">
+        <button v-on:click="add">submit</button>
     </div>
+    <div>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>-->
 <script>
     var vm = new Vue({
         el: '#app',
@@ -37,6 +38,68 @@
     })
 
 </script>
-
+<script>
+    // 模板必须变成 render 函数才可以解析
+    // code.render 函数: 上面 div#app 模板对应的解析
+    function codeRender() {
+        with (this) { // this就是 vm
+            return _c(
+                'div',
+                {
+                    attrs: {"id": "app"}
+                },
+                [
+                    _c(
+                        'div',
+                        [
+                            _c(
+                                'input',
+                                {
+                                    directives: [
+                                        {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: (title),
+                                            expression: "title"
+                                        }
+                                    ],
+                                    attrs: {
+                                        "type": "text"
+                                    },
+                                    domProps: {
+                                        "value": (title)
+                                    },
+                                    on: {
+                                        "input": function ($event) {
+                                            if ($event.target.composing) return;
+                                            title = $event.target.value
+                                        }
+                                    }
+                                }),
+                            _v(" "), // _v 创建一个文本节点
+                            _c(
+                                'button',
+                                {
+                                    on: {
+                                        "click": add
+                                    }
+                                },
+                                [_v("submit")])]), _v(" "),
+                    _c(
+                        'div',
+                        [
+                            _c(
+                                'ul',
+                                _l((list), function (item) {
+                                    return _c('li', [_v(_s(item))]) // _s: toString()
+                                })
+                            )
+                        ]
+                    )
+                ]
+            )
+        }
+    }
+</script>
 </body>
 </html>
