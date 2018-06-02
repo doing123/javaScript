@@ -27,3 +27,4 @@
 * Model->View
 
 > 浏览器没有数据监测的API。angular：$apply(),$digest(),$watch()
+> test
